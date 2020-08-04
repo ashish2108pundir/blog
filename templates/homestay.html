@@ -1,0 +1,90 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+
+
+{%block style%}
+
+
+.card {
+  box-shadow: 0 10px 8px 0 rgba(20, 150, 150, 0.2);
+  max-width: 100%;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  min-height:50px;
+
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  
+  padding: 8px;
+  color: white;
+  transition: 0.5s;
+  text-align: center;
+  cursor: pointer;
+  width: 50%;
+  font-size: 22px!important;
+  font-weight: 900!important;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  color:white!important;
+  background-color:black!important;
+}
+
+
+
+
+
+
+{%endblock%}
+
+
+
+
+{% block content %}
+
+
+<div class="container">
+<div class="row">
+{% for home in homestay%}
+<div class="col-md-4" >
+
+
+<div class="card py-2 my-3 mx-3">
+  <img src="{{home.imageurl}}" alt="{{home.imageurl}}" style="width:100%;max-height:150px;">
+  <h3>{{home.name}}</h3>
+  
+  <p>{{home.description |truncatechars:200 | safe}}</p>
+  
+  <p><a href="{{home.slug}}"><button class="btn btn-success button"><span>{{home.price}}</span></button></a></p>
+</div>
+
+
+</div>
+{% endfor %}  
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock content %}
